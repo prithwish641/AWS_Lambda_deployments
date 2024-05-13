@@ -1,4 +1,4 @@
-name: "Terraform Plan"
+name: "Terraform Workflow"
 
 on:
   push:
@@ -28,10 +28,12 @@ jobs:
 
     - name: Terraform Validate
       id: validate
+      if: github.event_name == 'push'
       run: terraform validate
 
     - name: Terraform format
       id: fmt
+      if: github.event_name == 'push'
       run: terraform fmt
 
     - name: Terraform plan
