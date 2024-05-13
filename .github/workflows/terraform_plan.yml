@@ -26,6 +26,10 @@ jobs:
       id: init
       run: terraform init
 
+    - name: Terraform Format
+      id: fmt
+      run: terraform fmt -check
+
     - name: Terraform plan
       id: plan
       if: github.event_name == 'push'
